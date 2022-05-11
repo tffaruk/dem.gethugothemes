@@ -3,7 +3,7 @@ import "styles/typo.scss";
 import { AppWrapper } from "context/state";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-
+import ErrorBoundary from "components/ErrorBoundary";
 import TagManager from "react-gtm-module";
 import config from "../config/config.json";
 
@@ -13,15 +13,26 @@ const tagManagerArgs = {
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  console.log(router);
+
   useEffect(() => {
     TagManager.initialize(tagManagerArgs);
   }, []);
-
+  function ErrorFallback({ error, resetErrorBoundary }) {
+    console.log("ccc", error);
+    return (
+      <div role="alert">
+        <p>Something went wrong:</p>
+        <pre>{error.message}</pre>
+        <button onClick={resetErrorBoundary}>Try again</button>
+      </div>
+    );
+  }
   return (
-    <AppWrapper>
-      <Component {...pageProps} />
-    </AppWrapper>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
+    </ErrorBoundary>
   );
 }
 
