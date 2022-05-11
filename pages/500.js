@@ -8,8 +8,6 @@ const Error = () => {
 
 export default Error;
 export const getStaticProps = async () => {
-  const notFoundData = getSingleFile("content/404.md");
-
   return {
     props: {
       notFoundData: notFoundData,

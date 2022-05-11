@@ -38,3 +38,13 @@ const NotFound = ({ notFoundData }) => {
 };
 
 export default NotFound;
+
+export const getStaticProps = async () => {
+  const notFoundData = getSingleFile("content/404.md");
+
+  return {
+    props: {
+      notFoundData: notFoundData,
+    },
+  };
+};
