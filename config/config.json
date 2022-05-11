@@ -1,0 +1,44 @@
+{
+  "parameter": {
+    "title": "Powerful, Creative And Blazing Fast Premium Hugo Themes",
+    "favicon": "/images/logo/favicon.png",
+    "logo": "/images/logo/logo.png",
+    "copyright": "COPYRIGHT © 2022 GETHUGOTHEMES",
+    "pagination": 12,
+    "site_url": "https://ght-next.netlify.app/",
+    "meta_author": "Gethugothemes",
+    "meta_description": "We build elegant and SEO Optimized Premium Hugo Themes. We are the biggest theme company among the Hugo community . Our themes has been forked over 5000 times.",
+    "meta_image": "/images/og-image.png",
+    "tag_manager_id": "GTM-T2PWRZX"
+  },
+
+  "socialMedia": [
+    {
+      "name": "facebook",
+      "icon": "/images/icons/facebook.svg",
+      "link": "https://www.facebook.com/gethugothemes"
+    },
+    {
+      "name": "twitter",
+      "icon": "/images/icons/twitter.svg",
+      "link": "https://twitter.com/gethugothemes"
+    },
+    {
+      "name": "instagram",
+      "icon": "/images/icons/github.svg",
+      "link": "https://www.github.com/gethugothemes/"
+    }
+  ],
+  "bundle": {
+    "title": "Unlimited Access To All Hugo Themes",
+    "subtitle": "Get Lifetime Access to **40+** **$99**  other hugo themes including this theme only",
+    "label": "Grab This Deal Now"
+  },
+  "brands": [
+    {
+      "name": "Themefisher",
+      "logo": "/images/logo/themefisher-logo.svg",
+      "url": "https://themefisher.com"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+@import "bootstrap_variables";
+@import "bootstrap";
+
+html {
+  scroll-behavior: auto !important;
+}
+
+.form-control,
+.form-select {
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+textarea.form-control {
+  padding: 0.5rem 0.75rem !important;
+}
+select:required:invalid {
+  color: rgba(black, 0.6);
+}
+option {
+  color: black;
+}

@@ -1,0 +1,92 @@
+{
+  "main_menu": [
+    {
+      "name": "All Themes",
+      "url": "/shop",
+      "child": "true"
+    },
+    {
+      "name": "Bundle",
+      "url": "/bundle"
+    },
+    {
+      "name": "Services",
+      "url": "/services"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
+      "name": "Account",
+      "url": "https://account.gethugothemes.com/"
+    }
+  ],
+
+  "footer_menu": [
+    {
+      "name": "company",
+      "pages": [
+        {
+          "name": "Services",
+          "url": "/services"
+        },
+        {
+          "name": "Blog",
+          "url": "/blog"
+        },
+        {
+          "name": "Account",
+          "url": "https://account.gethugothemes.com/"
+        }
+      ]
+    },
+    {
+      "name": "Resources",
+      "pages": [
+        {
+          "name": "Bundle",
+          "url": "/bundle"
+        },
+        {
+          "name": "All Products",
+          "url": "/shop"
+        }
+      ]
+    },
+    {
+      "name": "Help And Support",
+      "pages": [
+        {
+          "name": "Frequently Asked Questions",
+          "url": "/faq"
+        },
+        {
+          "name": "License",
+          "url": "/license"
+        },
+        {
+          "name": "Re Download",
+          "url": "/re-download"
+        }
+      ]
+    },
+    {
+      "name": "Terms",
+      "pages": [
+        {
+          "name": "Terms And Condition",
+          "url": "/terms-and-condition"
+        },
+        {
+          "name": "Privacy Policy",
+          "url": "/privacy-policy"
+        }
+      ]
+    }
+  ]
+}
