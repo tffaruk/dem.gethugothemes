@@ -6,6 +6,7 @@ import { Regular } from "Layouts/Regular";
 import Service from "Layouts/Service";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
+import { useRouter } from "next/router";
 const RegulerPage = ({
   serviceData,
   testimonial,
@@ -17,7 +18,12 @@ const RegulerPage = ({
   contactData,
   blogs,
   mdxSource,
+  allSlug,
 }) => {
+  const router = useRouter();
+  if (!allSlug[0].includes(router.asPath.replace("/", ""))) {
+    router.push("/");
+  }
   return (
     <>
       {slug == "services" ? (
@@ -57,6 +63,8 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }) => {
   const { regulerPage } = params;
   const regulerPages = getRegulerPage("content");
+  const allSlug = regulerPages.map((data) => data.allSlug);
+
   const regulerPost = regulerPages.filter((p) => !p.frontmatter.layout);
   const filterPost = regulerPost.filter((data) => data.slug === regulerPage);
 
@@ -104,6 +112,7 @@ export const getStaticProps = async ({ params }) => {
       contactData: contactData,
       mdxSource: mdxSource,
       blogs: blog,
+      allSlug: allSlug,
     },
   };
 };
