@@ -88,26 +88,26 @@ export const getStaticProps = async ({ params }) => {
   // console.log(filterPost);
 
   // servicePage
-  const servicePage = regulerPages.filter(
-    (p) => p.frontmatter.layout == "service"
-  );
-  const serviceData = servicePage[0];
+  // const servicePage = regulerPages.filter(
+  //   (p) => p.frontmatter.layout == "service"
+  // );
+  // const serviceData = servicePage[0];
   // testimonial data
-  const testimonial = getSingleFile("content/testimonial.md");
-  const testimonialData = testimonial.frontmatter;
-  // showcase data
-  const showcase = getSingleFile("content/showcase.md");
-  const showcaseData = showcase.frontmatter;
+  // const testimonial = getSingleFile("content/testimonial.md");
+  // const testimonialData = testimonial.frontmatter;
+  // // showcase data
+  // const showcase = getSingleFile("content/showcase.md");
+  // const showcaseData = showcase.frontmatter;
   // bundle data
 
   const allProducts = getAllData("content/products", false);
   const bundleData = getSingleFile("content/bundle.md");
   console.log(bundleData);
   // contact page data
-  const contactPage = regulerPages.filter(
-    (p) => p.frontmatter.layout == "contact"
-  );
-  const contactData = contactPage[0];
+  // const contactPage = regulerPages.filter(
+  //   (p) => p.frontmatter.layout == "contact"
+  // );
+  // const contactData = contactPage[0];
   // blog page data
   const blogPage = regulerPages.filter((p) => p.frontmatter.layout === "post");
   const blog = blogPage.filter((data) =>
@@ -124,8 +124,8 @@ export const getStaticProps = async ({ params }) => {
     props: {
       // serviceData: serviceData,
       filterPost: filterPost,
-      testimonial: testimonialData,
-      showcase: showcaseData,
+      // testimonial: testimonialData,
+      // showcase: showcaseData,
       slug: regulerPage,
       products: allProducts,
       bundleData: bundleData,

@@ -12,10 +12,10 @@ import config from "../config/config.json";
 
 const Home = ({
   homePageData,
-  testimonialData: { name, user },
+  // testimonialData: { name, user },
   products,
   productIndex,
-  showcase,
+  // showcase,
   indexData,
 }) => {
   const { banner, features, services } = homePageData.frontmatter;
@@ -30,8 +30,8 @@ const Home = ({
       <Banner bannerData={banner} />
       <Posts productIndex={productIndex} products={products} />
       <Features featureData={features} />
-      <Testimonial name={name} user={user} />
-      <Showcase showcase={showcase} />
+      {/* <Testimonial name={name} user={user} /> */}
+      {/* <Showcase showcase={showcase} /> */}
       <Service services={services} />
       <Script
         strategy="beforeInteractive"
@@ -69,11 +69,11 @@ export default Home;
 export const getStaticProps = () => {
   const homePageData = getSingleFile("content/_index.md");
   // testiomial data
-  const testimonial = getSingleFile("content/testimonial.md");
-  const testimonialData = testimonial.frontmatter;
+  // const testimonial = getSingleFile("content/testimonial.md");
+  // const testimonialData = testimonial.frontmatter;
   // showcase data
-  const showcase = getSingleFile("content/showcase.md");
-  const showcaseData = showcase.frontmatter;
+  // const showcase = getSingleFile("content/showcase.md");
+  // const showcaseData = showcase.frontmatter;
   const allProducts = getAllData("content/products", false);
   // _index data
   const productIndex = getSingleFile("content/products/_index.md");
@@ -82,10 +82,10 @@ export const getStaticProps = () => {
   return {
     props: {
       homePageData: homePageData,
-      testimonialData: testimonialData,
+      // testimonialData: testimonialData,
       products: allProducts,
       productIndex: productIndex,
-      showcase: showcaseData,
+      // showcase: showcaseData,
       indexData: indexData,
     },
   };
