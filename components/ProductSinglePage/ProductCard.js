@@ -6,7 +6,7 @@ import { kebabCase } from "@/lib/slugger";
 
 const ProductCard = ({ singleProduct }) => {
   const { bundle } = config;
-  const { title, price, demo, download, github } = singleProduct[0].frontmatter;
+  const { title, price, demo, download, github } = singleProduct.frontmatter;
 
   return (
     <div className={`${styles.productSidebar} card d-none d-lg-block`}>

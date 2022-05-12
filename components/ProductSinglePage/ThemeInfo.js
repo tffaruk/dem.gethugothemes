@@ -12,7 +12,7 @@ const ThemeInfo = ({ singleProduct, changelogData, showChangelog }) => {
     hugo_version,
     theme_version,
     documentation,
-  } = singleProduct[0].frontmatter;
+  } = singleProduct.frontmatter;
 
   return (
     <div className={`${styles.productSidebar} card mt-4`}>

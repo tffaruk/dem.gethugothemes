@@ -1,4 +1,4 @@
-import { getAllData, getChangelogData } from "@/lib/pages";
+import { getAllData, getAllDataSlug, getChangelogData } from "@/lib/pages";
 import Iframe from "components/ProductSinglePage/Iframe";
 import Layout from "components/Layouts/Layout";
 import ProductCard from "components/ProductSinglePage/ProductCard";
@@ -21,6 +21,7 @@ const SinglePage = ({
   mdxSource,
 }) => {
   const [showChangelog, setShowChangelog] = useState(false);
+  console.log(singleProduct);
   const router = useRouter();
   useEffect(() => {
     if (router.query.changelog == "show") {
@@ -33,7 +34,7 @@ const SinglePage = ({
   // end
 
   const { title, meta_title, description, image, noindex } =
-    singleProduct[0].frontmatter;
+    singleProduct.frontmatter;
   // change log
   const changelog = changelogData.filter((c) => c.slug == slug);
 
@@ -42,9 +43,7 @@ const SinglePage = ({
       title={title}
       meta_title={meta_title}
       description={
-        description
-          ? description
-          : strip(singleProduct[0].content.slice(0, 120))
+        description ? description : strip(singleProduct.content.slice(0, 120))
       }
       image={image}
       noindex={noindex}
@@ -111,9 +110,9 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const allProducts = getAllData("content/products", false);
-  const singleProduct = allProducts.posts.filter((p) => p.slug == slug);
-  const { content } = singleProduct[0];
+  const slugData = getAllDataSlug("content/products", slug);
+
+  const { content } = slugData;
   const options = {
     mdxOptions: {
       rehypePlugins: [rehypeSlug],
@@ -122,10 +121,10 @@ export const getStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content, options);
 
   const changelogData = getChangelogData();
-
+  const allProducts = getAllData("content/products", false);
   return {
     props: {
-      singleProduct: singleProduct,
+      singleProduct: slugData,
       slug: slug,
       allProducts: allProducts,
       changelogData: changelogData,

@@ -54,10 +54,10 @@ const Iframe = ({ singleProduct }) => {
               className={styles.bwsActionLink}
               target="blank"
               href={
-                singleProduct[0].frontmatter.demo
-                  ? singleProduct[0].frontmatter.demo
+                singleProduct.frontmatter.demo
+                  ? singleProduct.frontmatter.demo
                   : `https://demo.gethugothemes.com/${kebabCase(
-                      singleProduct[0].frontmatter.title
+                      singleProduct.frontmatter.title
                     )}/site/`
               }
             >
@@ -86,13 +86,13 @@ const Iframe = ({ singleProduct }) => {
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
             loading="lazy"
             src={
-              singleProduct[0].frontmatter.demo
-                ? singleProduct[0].frontmatter.demo
+              singleProduct.frontmatter.demo
+                ? singleProduct.frontmatter.demo
                 : `https://demo.gethugothemes.com/${kebabCase(
-                    singleProduct[0].frontmatter.title
+                    singleProduct.frontmatter.title
                   )}/site/`
             }
-            title={singleProduct[0].frontmatter.title}
+            title={singleProduct.frontmatter.title}
           ></iframe>
         </div>
       </div>
@@ -100,8 +100,8 @@ const Iframe = ({ singleProduct }) => {
         className={`rounded-3 overflow-hidden d-lg-none d-block lh-0 ${common.shadowLg}`}
       >
         <Image
-          src={singleProduct[0].frontmatter.image}
-          alt={singleProduct[0].frontmatter.title}
+          src={singleProduct.frontmatter.image}
+          alt={singleProduct.frontmatter.title}
           height="600"
           width="800"
         />
