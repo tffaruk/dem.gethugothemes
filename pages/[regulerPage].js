@@ -7,6 +7,7 @@ import Service from "Layouts/Service";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 const RegulerPage = ({
   serviceData,
   testimonial,
@@ -21,9 +22,12 @@ const RegulerPage = ({
   allSlug,
 }) => {
   const router = useRouter();
-  if (!allSlug[0].includes(router.asPath.replace("/", ""))) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (!allSlug[0].includes(router.asPath.replace("/", ""))) {
+      router.push("/");
+      console.log(ture);
+    }
+  }, [allSlug, router]);
   return (
     <>
       {slug == "services" ? (
