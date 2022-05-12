@@ -22,12 +22,12 @@ const RegulerPage = ({
   allSlug,
 }) => {
   const router = useRouter();
+
   useEffect(() => {
     if (!allSlug[0].includes(router.asPath.replace("/", ""))) {
       router.push("/");
-      console.log(ture);
     }
-  }, [allSlug, router]);
+  });
   return (
     <>
       {slug == "services" ? (
