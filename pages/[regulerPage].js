@@ -1,4 +1,9 @@
-import { getAllData, getRegulerPage, getSingleFile } from "@/lib/pages";
+import {
+  getAllData,
+  getAllRegulerPageSlug,
+  getRegulerPage,
+  getSingleFile,
+} from "@/lib/pages";
 import BlogSinglePage from "Layouts/BlogSinglePage";
 import Contact from "components/Contact";
 import Bundle from "Layouts/Bundle";
@@ -21,31 +26,40 @@ const RegulerPage = ({
   mdxSource,
   allSlug,
 }) => {
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (!allSlug[0].includes(router.asPath.replace("/", ""))) {
-      router.push("/");
-    }
-  });
+  // useEffect(() => {
+  //   if (!allSlug[0].includes(router.asPath.replace("/", ""))) {
+  //     router.push("/");
+  //   }
+  // });
   return (
     <>
-      {slug == "services" ? (
-        <Service
-          serviceData={serviceData}
-          testimonial={testimonial}
-          showcase={showcase}
-          slug={slug}
-        />
-      ) : slug == bundleData.frontmatter.layout ? (
-        <Bundle products={products.posts} bundleData={bundleData} slug={slug} />
-      ) : slug == "contact" ? (
-        <Contact contactData={contactData} slug={slug} />
-      ) : blogs.length > 0 ? (
-        <BlogSinglePage blog={blogs[0]} slug={slug} mdxSource={mdxSource} />
-      ) : (
-        <Regular filterPost={filterPost} slug={slug} />
-      )}
+      {
+        // slug == "services" ? (
+        //   <Service
+        //     serviceData={serviceData}
+        //     testimonial={testimonial}
+        //     showcase={showcase}
+        //     slug={slug}
+        //   />
+        // )
+        // :
+        slug == bundleData.frontmatter.layout ? (
+          <Bundle
+            products={products.posts}
+            bundleData={bundleData}
+            slug={slug}
+          />
+        ) : //  : slug == "contact" ? (
+        //   <Contact contactData={contactData} slug={slug} />
+        // )
+        blogs.length > 0 ? (
+          <BlogSinglePage blog={blogs[0]} slug={slug} mdxSource={mdxSource} />
+        ) : (
+          <Regular filterPost={filterPost} slug={slug} />
+        )
+      }
     </>
   );
 };
@@ -53,11 +67,11 @@ const RegulerPage = ({
 export default RegulerPage;
 
 export async function getStaticPaths() {
-  const regulerPages = getRegulerPage("content");
-
+  const regulerPages = getAllRegulerPageSlug();
+  console.log(regulerPages);
   const paths = regulerPages.map((d) => ({
     params: {
-      regulerPage: d.slug,
+      regulerPage: d,
     },
   }));
 
@@ -66,11 +80,12 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async ({ params }) => {
   const { regulerPage } = params;
-  const regulerPages = getRegulerPage("content");
-  const allSlug = regulerPages.map((data) => data.allSlug);
+  const regulerPages = getRegulerPage(regulerPage);
+  // console.log(regulerPages);
 
   const regulerPost = regulerPages.filter((p) => !p.frontmatter.layout);
   const filterPost = regulerPost.filter((data) => data.slug === regulerPage);
+  // console.log(filterPost);
 
   // servicePage
   const servicePage = regulerPages.filter(
@@ -87,6 +102,7 @@ export const getStaticProps = async ({ params }) => {
 
   const allProducts = getAllData("content/products", false);
   const bundleData = getSingleFile("content/bundle.md");
+  console.log(bundleData);
   // contact page data
   const contactPage = regulerPages.filter(
     (p) => p.frontmatter.layout == "contact"
@@ -106,17 +122,16 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      serviceData: serviceData,
+      // serviceData: serviceData,
       filterPost: filterPost,
       testimonial: testimonialData,
       showcase: showcaseData,
       slug: regulerPage,
       products: allProducts,
       bundleData: bundleData,
-      contactData: contactData,
+      // contactData: contactData,
       mdxSource: mdxSource,
       blogs: blog,
-      allSlug: allSlug,
     },
   };
 };

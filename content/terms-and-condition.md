@@ -1,8 +1,8 @@
 ---
-title: Terms And Condition 
+title: Terms And Condition
 meta_title: Terms And Condition - Gethugothemes
 description: Check out our Terms And Condition.
-image: 
+image:
 noindex: false
 ---
 
