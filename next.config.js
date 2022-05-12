@@ -15,4 +15,13 @@ module.exports = {
   },
   pageExtensions: ["js", "jsx", "md", "mdx"],
   nextConfig,
+  async redirects() {
+    return [
+      {
+        source: "/500",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
 };
