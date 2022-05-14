@@ -1,6 +1,6 @@
 import {
   getAllData,
-  getAllRegulerPageSlug,
+  getPaths,
   getRegulerPage,
   getSingleFile,
 } from "@/lib/pages";
@@ -67,11 +67,16 @@ const RegulerPage = ({
 export default RegulerPage;
 
 export async function getStaticPaths() {
-  const regulerPages = getAllRegulerPageSlug();
+  const getContentPaths = getPaths("content");
+  const getBlogPath = getPaths("content/blog");
+  const allPaths = [...getContentPaths, ...getBlogPath];
 
+  const allPages = allPaths.filter((file) => file.match(/^[a-z]/));
+  const regulerPages = allPages.filter((data) => data.includes(".md"));
+  console.log(regulerPages);
   const paths = regulerPages.map((d) => ({
     params: {
-      regulerPage: d,
+      regulerPage: d.replace(/\.(mdx|md)/, ""),
     },
   }));
 
@@ -102,7 +107,7 @@ export const getStaticProps = async ({ params }) => {
 
   const allProducts = getAllData("content/products", false);
   const bundleData = getSingleFile("content/bundle.md");
-  console.log(bundleData);
+
   // contact page data
   // const contactPage = regulerPages.filter(
   //   (p) => p.frontmatter.layout == "contact"
