@@ -2,7 +2,7 @@ import { getAllCategory } from "@/lib/category";
 import { getAllData, getSingleFile } from "@/lib/pages";
 import Layout from "components/Layouts/Layout";
 import Products from "components/Products";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import styles from "../styles/products.module.scss";
 import common from "styles/common.module.scss";
 import { sortByWeight, sortByDate } from "@/lib/utils";
@@ -15,12 +15,17 @@ const Shop = ({ products, categories, indexData }) => {
   const filterByWeight = products.posts.filter(
     (product) => product.frontmatter.weight > 0
   );
-  const productsByWeight = sortByWeight(filterByWeight);
+
   const productsByDate = sortByDate(products.posts);
+
+  const productsByWeight = sortByWeight(filterByWeight);
+
   const filterWeightProducts = productsByDate.filter(
     (product) => !productsByWeight.includes(product)
   );
   const allProducts = [...productsByWeight, ...filterWeightProducts];
+
+  console.log(allProducts.length);
   const filterData = (e, index) => {
     setEditIndex((editIndex) => (editIndex === index ? index : index));
 

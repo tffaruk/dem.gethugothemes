@@ -68,7 +68,7 @@ export default RegulerPage;
 
 export async function getStaticPaths() {
   const regulerPages = getAllRegulerPageSlug();
-  console.log(regulerPages);
+
   const paths = regulerPages.map((d) => ({
     params: {
       regulerPage: d,
